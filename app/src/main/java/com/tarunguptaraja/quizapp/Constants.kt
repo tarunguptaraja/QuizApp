@@ -7,8 +7,8 @@ object Constants {
     const val correctAnswers:String="correcct_answers"
 
 
-
     fun getQuestions():ArrayList<Question>{
+
         val questionsList=ArrayList<Question>()
 
         val que1= Question(

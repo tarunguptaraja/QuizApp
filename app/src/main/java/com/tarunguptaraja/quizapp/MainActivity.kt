@@ -13,8 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        window.decorView.systemUiVisibility= View.SYSTEM_UI_FLAG_FULLSCREEN
-
         val button=findViewById<Button>(R.id.button)
         val editText=findViewById<EditText>(R.id.editText)
         button.setOnClickListener{
@@ -27,7 +25,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
-
         }
     }
 }

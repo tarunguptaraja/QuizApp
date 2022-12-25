@@ -17,7 +17,7 @@ class QuestionActivity : AppCompatActivity() {
     private var mselectedOptPos: Int= 0
     private var mCorrectAnswer:Int=0
     private var mUserNamme:String?=null
-    val optionList =ArrayList<TextView>()
+    private val optionList =ArrayList<TextView>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +36,13 @@ class QuestionActivity : AppCompatActivity() {
         setQuestion()
 
         option1.setOnClickListener{
-            selectedOptionView(option1,0)
+            selectedOptionView(option1,1)
         }
         option2.setOnClickListener {
-            selectedOptionView(option2,1)
+            selectedOptionView(option2,2)
         }
         option3.setOnClickListener {
-            selectedOptionView(option3,2)
+            selectedOptionView(option3,3)
         }
         option4.setOnClickListener{
             selectedOptionView(option4,4)
@@ -57,27 +57,27 @@ class QuestionActivity : AppCompatActivity() {
                         setQuestion()
 
                     }else->{
-//                        Toast.makeText(this, "You have successfully completed the Quiz!", Toast.LENGTH_SHORT).show()
-                        val intent: Intent = Intent(this,ResultActivity::class.java)
+//                        Toast.makeText(this, "You have successfully completed the Quiz!$mCorrectAnswer", Toast.LENGTH_SHORT).show()
+                        val intent: Intent = Intent(this, ResultActivity::class.java)
                         intent.putExtra(Constants.username,mUserNamme)
-                        intent.putExtra(Constants.correctAnswers,mCorrectAnswer)
-//                        intent.putExtra(Constants.totalQuestion,mQuestionsList!!.size)
+                        intent.putExtra(Constants.correctAnswers,mCorrectAnswer.toString())
+                        intent.putExtra(Constants.totalQuestion,mQuestionsList!!.size.toString())
                         startActivity(intent)
                     }
                 }
             }else{
                 val question = mQuestionsList?.get(mCurrPosition-1)
-                if(question!!.correct!=mselectedOptPos+1){
-                    answerView(mselectedOptPos,R.drawable.wrong)
+                if(question!!.correct != mselectedOptPos){
+                    answerView(mselectedOptPos-1, R.drawable.wrong)
                 }else{
                     mCorrectAnswer++
                 }
-                answerView(question.correct-1,R.drawable.right)
+                answerView(question.correct-1, R.drawable.right)
 
                 if(mCurrPosition==mQuestionsList!!.size){
-                    button.setText("FINISH")
+                    button.text = "FINISH"
                 }else{
-                    button.setText("GO TO NEXT QUESTION")
+                    button.text = "GO TO NEXT QUESTION"
                 }
                 mselectedOptPos=0
             }
@@ -92,10 +92,10 @@ class QuestionActivity : AppCompatActivity() {
         if(mCurrPosition==mQuestionsList!!.size){
             button.setText("FINISH")
         }else{
-            button.setText("SUBMIT")
+            button.text = "SUBMIT"
         }
 
-        val question = mQuestionsList!!.get(mCurrPosition-1)
+        val question = mQuestionsList!![mCurrPosition-1]
         val position = findViewById<TextView>(R.id.position)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
         val questions = findViewById<TextView>(R.id.question)
@@ -107,7 +107,7 @@ class QuestionActivity : AppCompatActivity() {
 
         progressBar.progress=mCurrPosition
         position.text="$mCurrPosition"+"/"+progressBar.max
-        questions.text=question!!.question
+        questions.text= question.question
         image.setImageResource(question.image)
         option1.text=question.option1
         option2.text=question.option2
@@ -128,33 +128,9 @@ class QuestionActivity : AppCompatActivity() {
 
         for(option in optionList){
             option.typeface= Typeface.DEFAULT
-            option.background=ContextCompat.getDrawable(this,R.drawable.optionbg)
+            option.background=ContextCompat.getDrawable(this, R.drawable.optionbg)
         }
     }
-
-//    fun onClick(v: View?) {
-//        val option1 = findViewById<TextView>(R.id.option1)
-//        val option2 = findViewById<TextView>(R.id.option2)
-//        val option3 = findViewById<TextView>(R.id.option3)
-//        val option4 = findViewById<TextView>(R.id.option4)
-//        when(v?:id){
-//            R.id.option1->{
-//                selectedOptionView(option1,1)
-//            }
-//            R.id.option2->{
-//                selectedOptionView(option1,2)
-//            }
-//            R.id.option3->{
-//                selectedOptionView(option1,3)
-//            }
-//            R.id.option4->{
-//                selectedOptionView(option1,4)
-//            }
-//        }
-
-
-
-//    }
 
     private fun answerView(answer:Int, drawableView:Int){
         val option1 = findViewById<TextView>(R.id.option1)
@@ -164,16 +140,16 @@ class QuestionActivity : AppCompatActivity() {
 
         when(answer){
             0->{
-                option1.background=ContextCompat.getDrawable(this,drawableView)
+                option1.background=ContextCompat.getDrawable(this, drawableView)
             }
             1->{
-                option2.background=ContextCompat.getDrawable(this,drawableView)
+                option2.background=ContextCompat.getDrawable(this, drawableView)
             }
             2->{
-                option3.background=ContextCompat.getDrawable(this,drawableView)
+                option3.background=ContextCompat.getDrawable(this, drawableView)
             }
             3->{
-                option4.background=ContextCompat.getDrawable(this,drawableView)
+                option4.background=ContextCompat.getDrawable(this, drawableView)
             }
         }
     }
@@ -182,7 +158,7 @@ class QuestionActivity : AppCompatActivity() {
         defaultOptionView()
         mselectedOptPos = selectedOption
         option.setTypeface(option.typeface,Typeface.BOLD)
-        option.background=ContextCompat.getDrawable(this,R.drawable.sel_opt)
+        option.background=ContextCompat.getDrawable(this, R.drawable.sel_opt)
     }
 
 

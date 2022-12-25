@@ -127,10 +127,6 @@
             android:textColor="@color/white"
             android:textSize="18dp" />
 
-
-
-
-
     </LinearLayout>
 
 </ScrollView>
