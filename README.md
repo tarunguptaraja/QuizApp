@@ -9,9 +9,9 @@ Download link - [Download](https://github.com/tarunguptaraja/QuizApp/raw/master/
  </p>
  <p align="center">
 <img src="https://github.com/tarunguptaraja/QuizApp/blob/master/screenshots/selected.jpeg" width="310">
-<img src="https://github.com/tarunguptaraja/QuizApp/blob/master/screenshots/correct.jpegg" width="310">
+<img src="https://github.com/tarunguptaraja/QuizApp/blob/master/screenshots/correct.jpeg" width="310">
 </p>
  <p align="center">
-<img src="https://github.com/tarunguptaraja/QuizApp/blob/master/screenshots/wrong.jpegg" width="310">
-<img src="https://github.com/tarunguptaraja/QuizApp/blob/master/screenshots/result.jpegg" width="310">
+<img src="https://github.com/tarunguptaraja/QuizApp/blob/master/screenshots/wrong.jpeg" width="310">
+<img src="https://github.com/tarunguptaraja/QuizApp/blob/master/screenshots/result.jpeg" width="310">
 </p>
